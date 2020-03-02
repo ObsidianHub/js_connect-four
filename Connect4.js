@@ -27,4 +27,9 @@ class Connect4 {
       $board.append($row);
     }
   }
+
+  restart() {
+    this.createGrid();
+    this.onPlayerMove();
+  }
 }
