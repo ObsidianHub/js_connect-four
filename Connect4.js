@@ -42,6 +42,13 @@ class Connect4 {
       }
       return null;
     }
+
+    $board.on("mouseenter", ".col.empty", function() {
+      if (that.isGameOver) return;
+      const col = $(this).data("col");
+      const $lastEmptyCell = findLastEmptyCell(col);
+      $lastEmptyCell.addClass(`next-${that.player}`);
+    });
   }
 
   restart() {
