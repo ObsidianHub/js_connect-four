@@ -79,6 +79,34 @@ class Connect4 {
     });
   }
 
+  checkForWinner(row, col) {
+    const that = this;
+
+    function $getCell(i, j) {
+      return $(`.col[data-row='${i}'][data-col='${j}']`);
+    }
+
+    function checkDirection(direction) {
+      let total = 0;
+      let i = row + direction.i;
+      let j = col + direction.j;
+      let $next = $getCell(i, j);
+      while (
+        i >= 0 &&
+        i < that.ROWS &&
+        j >= 0 &&
+        j < that.COLS &&
+        $next.data("player") === that.player
+      ) {
+        total++;
+        i += direction.i;
+        j += direction.j;
+        $next = $getCell(i, j);
+      }
+      return total;
+    }
+  }
+
   restart() {
     this.createGrid();
     this.onPlayerMove();
