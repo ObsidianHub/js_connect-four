@@ -105,6 +105,15 @@ class Connect4 {
       }
       return total;
     }
+
+    function checkWin(directionA, directionB) {
+      const total = 1 + checkDirection(directionA) + checkDirection(directionB);
+      if (total >= 4) {
+        return that.player;
+      } else {
+        return null;
+      }
+    }
   }
 
   restart() {
